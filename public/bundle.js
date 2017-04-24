@@ -28607,7 +28607,7 @@
 	    React.createElement(
 	      'h2',
 	      null,
-	      'This is Examples'
+	      'This is examples!!!'
 	    )
 	  );
 	};
