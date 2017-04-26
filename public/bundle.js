@@ -28612,7 +28612,7 @@
 	    React.createElement(
 	      'p',
 	      null,
-	      'Push files without typing password!'
+	      'Push files without typing ID!!!'
 	    )
 	  );
 	};
