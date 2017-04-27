@@ -25118,7 +25118,7 @@
 	      React.createElement(
 	        'form',
 	        { onSubmit: this.handleSubmit },
-	        React.createElement('input', { type: 'text', ref: 'location' }),
+	        React.createElement('input', { type: 'text', ref: 'location', placeholder: 'Search by location' }),
 	        React.createElement(
 	          'button',
 	          { className: 'button hollow expanded' },
@@ -28780,6 +28780,40 @@
 	      'h2',
 	      { className: 'text-center' },
 	      'About'
+	    ),
+	    React.createElement(
+	      'p',
+	      null,
+	      'This is the very first App that I\'ve made so far. Stay tuned for next ones. They would be so much better'
+	    ),
+	    React.createElement(
+	      'p',
+	      null,
+	      'Here are some tools that I used!!'
+	    ),
+	    React.createElement(
+	      'ul',
+	      null,
+	      React.createElement(
+	        'li',
+	        null,
+	        React.createElement(
+	          'a',
+	          { href: 'https://facebook.github.io/react/' },
+	          'Facebook React'
+	        ),
+	        ' -  This was a Javascript library used'
+	      ),
+	      React.createElement(
+	        'li',
+	        null,
+	        React.createElement(
+	          'a',
+	          { href: 'http://openweathermap.org' },
+	          'Open Weather Map'
+	        ),
+	        ' - I used Open Weather Map to search for weather data by city name.'
+	      )
 	    )
 	  );
 	};
