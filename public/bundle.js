@@ -25081,7 +25081,7 @@
 	      null,
 	      React.createElement(
 	        'h3',
-	        null,
+	        { className: 'text-center' },
 	        'Weather'
 	      ),
 	      React.createElement(WeatherForm, { onSearch: this.handleSearch }),
@@ -28717,6 +28717,9 @@
 
 	var React = __webpack_require__(8);
 
+	var _require = __webpack_require__(166),
+	    Link = _require.Link;
+
 	var Examples = React.createClass({
 	  displayName: 'Examples',
 
@@ -28725,14 +28728,36 @@
 	      'div',
 	      null,
 	      React.createElement(
-	        'h3',
-	        null,
+	        'h2',
+	        { className: 'text-center' },
 	        'Examples'
 	      ),
 	      React.createElement(
 	        'p',
 	        null,
-	        'This is fucked up!!!'
+	        'Here are some locations to try out'
+	      ),
+	      React.createElement(
+	        'ol',
+	        null,
+	        React.createElement(
+	          'li',
+	          null,
+	          React.createElement(
+	            Link,
+	            { to: '/?location = Ha Noi' },
+	            'Ha Noi'
+	          )
+	        ),
+	        React.createElement(
+	          'li',
+	          null,
+	          React.createElement(
+	            Link,
+	            { to: '/?location = Ho Chi Minh' },
+	            'Ho Chi Minh'
+	          )
+	        )
 	      )
 	    );
 	  }
@@ -28753,7 +28778,7 @@
 	    null,
 	    React.createElement(
 	      'h2',
-	      null,
+	      { className: 'text-center' },
 	      'About'
 	    )
 	  );
