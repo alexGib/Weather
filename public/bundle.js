@@ -24917,11 +24917,14 @@
 	    null,
 	    React.createElement(Nav, null),
 	    React.createElement(
-	      'h2',
-	      null,
-	      'Main components'
-	    ),
-	    props.children
+	      'div',
+	      { className: 'row' },
+	      React.createElement(
+	        'div',
+	        { className: 'columns medium-6 large-4 small-centered ' },
+	        props.children
+	      )
+	    )
 	  );
 	};
 	module.exports = Main;
@@ -24958,7 +24961,7 @@
 	          React.createElement(
 	            'li',
 	            { className: 'menu-text' },
-	            'React Weather'
+	            'A Weather App'
 	          ),
 	          React.createElement(
 	            'li',
@@ -25079,7 +25082,7 @@
 	      React.createElement(
 	        'h3',
 	        null,
-	        'Weather Components'
+	        'Weather'
 	      ),
 	      React.createElement(WeatherForm, { onSearch: this.handleSearch }),
 	      renderMessage()
@@ -25118,7 +25121,7 @@
 	        React.createElement('input', { type: 'text', ref: 'location' }),
 	        React.createElement(
 	          'button',
-	          null,
+	          { className: 'button hollow expanded' },
 	          'Get Weather'
 	        )
 	      )
@@ -28714,22 +28717,26 @@
 
 	var React = __webpack_require__(8);
 
-	var Examples = function Examples(props) {
-	  return React.createElement(
-	    'div',
-	    null,
-	    React.createElement(
-	      'h3',
+	var Examples = React.createClass({
+	  displayName: 'Examples',
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
 	      null,
-	      'This is examples!!!'
-	    ),
-	    React.createElement(
-	      'p',
-	      null,
-	      'This is fucked up!!!'
-	    )
-	  );
-	};
+	      React.createElement(
+	        'h3',
+	        null,
+	        'Examples'
+	      ),
+	      React.createElement(
+	        'p',
+	        null,
+	        'This is fucked up!!!'
+	      )
+	    );
+	  }
+	});
 	module.exports = Examples;
 
 /***/ },
@@ -28747,7 +28754,7 @@
 	    React.createElement(
 	      'h2',
 	      null,
-	      'This is About'
+	      'About'
 	    )
 	  );
 	};
