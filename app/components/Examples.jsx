@@ -4,7 +4,7 @@ var Examples = (props) =>{
   return (
     <div>
       <h3>This is examples!!!</h3>
-      <p>Push files without typing ID!!!</p>
+      <p>Already fire Heroku up!!!</p>
   </div>
   );
 };
