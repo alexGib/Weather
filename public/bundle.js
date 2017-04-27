@@ -25069,7 +25069,7 @@
 	      if (isLoading) {
 	        return React.createElement(
 	          'h3',
-	          null,
+	          { className: 'text-center' },
 	          'Fetching data...!!!'
 	        );
 	      } else if (temp && location) {
@@ -25082,7 +25082,7 @@
 	      React.createElement(
 	        'h3',
 	        { className: 'text-center' },
-	        'Weather'
+	        'Get Weather'
 	      ),
 	      React.createElement(WeatherForm, { onSearch: this.handleSearch }),
 	      renderMessage()
@@ -25147,8 +25147,8 @@
 	    null,
 	    React.createElement(
 	      'p',
-	      null,
-	      'it is ',
+	      { className: 'text-center' },
+	      'It is ',
 	      temp,
 	      ' in ',
 	      location,
