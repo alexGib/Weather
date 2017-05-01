@@ -110,8 +110,12 @@
 	var About = __webpack_require__(260);
 
 	//Load foundation
+	//TORESEARCH
 	__webpack_require__(261);
 	$(document).foundation();
+	// App css
+	//TORESEARCH
+	__webpack_require__(265);
 
 	ReactDOM.render(React.createElement(
 	  Router,
@@ -25039,34 +25043,43 @@
 	var Weather = React.createClass({
 	  displayName: 'Weather',
 
+	  // this is one of two method inside setState method
 	  getInitialState: function getInitialState() {
 	    return {
-	      isLoading: false
+	      isLoading: false // the message does not loading by default
 	    };
 	  },
+	  // maintain state method
 	  handleSearch: function handleSearch(location) {
 	    var that = this;
 	    that.setState({
-	      isLoading: true
+	      isLoading: true, // this mess is only shown in a moment until the temp and location are successfully crawled
+	      errorMessage: undefined // when new searh is executing, errorMessage is clear
 	    });
+	    // crawl date from api using promise method
 	    openWeatherMap.getTemp(location).then(function (temp) {
+	      // if things go successfully, temp and location are returned
 	      that.setState({
 	        location: location,
 	        temp: temp,
 	        isLoading: false
 	      });
-	    }, function (errorMessage) {
+	      // if things do not go well, errors are thrown
+	    }, function (e) {
 	      that.setState({
-	        isLoading: false
+	        isLoading: false,
+	        errorMessage: e.message
 	      });
-	      alert(errorMessage);
 	    });
 	  },
+	  // render is method that render everything on screen so everything need to be called in this method
 	  render: function render() {
 	    var _state = this.state,
+	        errorMessage = _state.errorMessage,
 	        isLoading = _state.isLoading,
 	        location = _state.location,
 	        temp = _state.temp;
+	    //  this function  will throw an "fetching data" message when things go wrong and throw a message that shows location and its temperature
 
 	    function renderMessage() {
 	      if (isLoading) {
@@ -25076,19 +25089,27 @@
 	          'Fetching data...!!!'
 	        );
 	      } else if (temp && location) {
+	        // call WeatherMessage component and let it shows message itself
 	        return React.createElement(WeatherMessage, { location: location, temp: temp });
 	      }
-	    };
+	    }
+	    // this function will throw a message when things go wrong
+	    function renderError() {
+	      if (typeof errorMessage === 'string') {
+	        return React.createElement(ErrorModal, { message: errorMessage });
+	      }
+	    }
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
 	        'h3',
-	        { className: 'text-center' },
+	        { className: 'text-center page-title' },
 	        'Get Weather'
 	      ),
 	      React.createElement(WeatherForm, { onSearch: this.handleSearch }),
-	      renderMessage()
+	      renderMessage(),
+	      renderError()
 	    );
 	  }
 	});
@@ -25121,7 +25142,7 @@
 	      React.createElement(
 	        'form',
 	        { onSubmit: this.handleSubmit },
-	        React.createElement('input', { type: 'text', ref: 'location', placeholder: 'Search by location' }),
+	        React.createElement('input', { type: 'search', ref: 'location', placeholder: 'Search by location' }),
 	        React.createElement(
 	          'button',
 	          { className: 'button hollow expanded' },
@@ -28725,26 +28746,36 @@
 
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      title: "error"
+	      title: "Error"
 	    };
 	  },
+	  // TORESEARCH
+	  propTypes: {
+	    title: React.PropTypes.string,
+	    message: React.PropTypes.string.isRquired
+	  },
+	  //TORESEARCH
 	  componentDidMount: function componentDidMount() {
 	    var modal = new Foundation.Reveal($("#error-modal"));
 	    modal.open();
 	  },
 	  render: function render() {
+	    var _props = this.props,
+	        title = _props.title,
+	        message = _props.message;
+
 	    return React.createElement(
 	      "div",
 	      { id: "error-modal", className: "reveal tiny text-center", "data-reveal": "" },
 	      React.createElement(
 	        "h3",
 	        null,
-	        "Error"
+	        title
 	      ),
 	      React.createElement(
 	        "p",
 	        null,
-	        "Error message here"
+	        message
 	      ),
 	      React.createElement(
 	        "p",
@@ -28782,7 +28813,7 @@
 	      null,
 	      React.createElement(
 	        'h2',
-	        { className: 'text-center' },
+	        { className: 'text-center page-title' },
 	        'Examples'
 	      ),
 	      React.createElement(
@@ -28798,7 +28829,7 @@
 	          null,
 	          React.createElement(
 	            Link,
-	            { to: '/?location = Ha Noi' },
+	            { to: '/?location=Ha Noi' },
 	            'Ha Noi'
 	          )
 	        ),
@@ -28807,7 +28838,7 @@
 	          null,
 	          React.createElement(
 	            Link,
-	            { to: '/?location = Ho Chi Minh' },
+	            { to: '/?location=Ho Chi Minh' },
 	            'Ho Chi Minh'
 	          )
 	        )
@@ -28831,7 +28862,7 @@
 	    null,
 	    React.createElement(
 	      'h2',
-	      { className: 'text-center' },
+	      { className: 'text-center page-title' },
 	      'About'
 	    ),
 	    React.createElement(
@@ -29220,6 +29251,46 @@
 		if(oldSrc)
 			URL.revokeObjectURL(oldSrc);
 	}
+
+
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(266);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(264)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/index.js!./app.scss", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/index.js!./app.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 266 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(263)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".page-title {\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem; }\n\ninput[type=search] {\n  box-shadow: none; }\n", ""]);
+
+	// exports
 
 
 /***/ }

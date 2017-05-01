@@ -5,11 +5,11 @@ var Examples = React.createClass ({
   render: function(){
     return (
       <div>
-        <h2 className = 'text-center' >Examples</h2>
+        <h2 className = 'text-center page-title' >Examples</h2>
         <p>Here are some locations to try out</p>
         <ol>
-          <li><Link to ='/?location = Ha Noi'>Ha Noi</Link></li>
-          <li><Link to ='/?location = Ho Chi Minh'>Ho Chi Minh</Link></li>
+          <li><Link to ='/?location=Ha Noi'>Ha Noi</Link></li>
+          <li><Link to ='/?location=Ho Chi Minh'>Ho Chi Minh</Link></li>
         </ol>
     </div>
     );

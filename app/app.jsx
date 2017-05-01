@@ -7,8 +7,12 @@ var Examples = require('Examples');
 var About = require('About');
 
 //Load foundation
+//TORESEARCH
 require('style-loader!css!foundation-sites/dist/foundation.min.css')
 $(document).foundation();
+// App css
+//TORESEARCH
+require('style!css!sass!applicationStyles');
 
 ReactDOM.render(
 <Router history={hashHistory}>
